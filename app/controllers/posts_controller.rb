@@ -8,12 +8,10 @@ class PostsController < ApplicationController
 
   def moderator
     @posts = Post.all
-    # redirect_to moderator_posts_path
   end
 
   def all
     @posts = Post.all
-    # redirect_to all_posts_path
   end
 
   def send_to_moderator
