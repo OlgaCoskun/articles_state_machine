@@ -1,0 +1,9 @@
+<%= link_to 'New Post', new_post_path %>
+
+<%= render 'post', post: @post %>
+
+<%= button_to 'Все посты', all_posts_path, method: :get, class: "button" %>
+
+<br>
+
+<%= button_to 'Посты на модерации', moderator_posts_path, method: :get, class: "button" %>

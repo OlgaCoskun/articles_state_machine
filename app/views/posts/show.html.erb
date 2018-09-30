@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'form' %>
+
+
+<%= link_to 'Send to moderator', send_to_moderator_post_path(@post), method: :patch %>
+<br>
+
+<%= link_to 'Publish', send_to_publish_post_path(@post), method: :patch %>
+<br>
+<br>
+
+<%= render partial: 'comments/form',
+           locals:  { comment: @new_comment || @post.comments.build } %>
+
+
+<%= render partial: 'comments/comment', collection: @post.comments.except(@new_comment) %>

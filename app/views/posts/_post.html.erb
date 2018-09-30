@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Посты опубликованные</h1>
+
+<% @posts.each do |post| %>
+
+  <% if post.state == 'publish' %>
+
+    <p><%= post.title %></p>
+    <p><%= post.body %></p>
+
+    <table>
+      <tbody>
+      <tr>
+        <td><%= link_to 'Show', post_path(post) %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+  <% end %>
+<% end %>

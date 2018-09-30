@@ -1,0 +1,7 @@
+<p><%= comment.com_body %></p>
+<p>
+
+  <%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'are you sure?' } %>
+  <br> 
+  <%=link_to "LIKE", like_post_comment_path(comment.post, comment)%>
+  <%= comment.like_count %>
