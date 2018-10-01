@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, optional: true
 
   accepts_nested_attributes_for(:category, update_only: true)
   has_many :comments, dependent: :destroy

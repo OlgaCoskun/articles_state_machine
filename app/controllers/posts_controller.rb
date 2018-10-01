@@ -76,7 +76,8 @@ class PostsController < ApplicationController
 
   def post_params
     defaults = { state: 'create' }
-    params.require(:post).permit(:title, :body, :link, :category_id).reverse_merge(defaults)
+    # params.require(:post).permit(:title, :body, :link, :category_id).reverse_merge(defaults)
+    params.fetch(:post, {}).permit(:title, :body, :link, :category_id).reverse_merge(defaults)
   end
 end
 

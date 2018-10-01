@@ -1,7 +1,8 @@
 <%= form_for @post do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post
+        from
         being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
@@ -28,7 +29,9 @@
 
   <div class="form-group">
     <%= f.label :category_id %>
-    <%= f.text_field :category_id, class: 'form-control' %>
+    <%= f.collection_select :category_id, Category.all, :id, :topic, class: 'form-control', :prompt => 'Select Category' %>
+    <br>
+    <br>
   </div>
 
   <div class="actions">
