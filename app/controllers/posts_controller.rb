@@ -16,13 +16,13 @@ class PostsController < ApplicationController
 
   def send_to_moderator
     @post.moderator
-    redirect_to post_path, notice: 'Your post has been sent to moderator' if @post.save
+    redirect_to moderator_posts_path, notice: 'Your post has been sent to moderator' if @post.save
   end
 
   def send_to_publish
     @post.publish
     if @post.state == 'publish'
-      redirect_to post_path(@post), notice: 'Пост выставлен'
+      redirect_to root_path, notice: 'Пост выставлен'
     else
       redirect_to post_path(@post), notice: 'Нужен линк и категория'
     end

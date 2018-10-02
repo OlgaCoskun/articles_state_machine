@@ -3,15 +3,22 @@
 <%= render 'form' %>
 
 
-<%= link_to 'Send to moderator', send_to_moderator_post_path(@post), method: :patch %>
-<br>
+<% if @post.state == 'create' %>
+  <%= button_to 'Send to moderator', send_to_moderator_post_path(@post), method: :patch %>
+<% end %>
 
-<%= link_to 'Publish', send_to_publish_post_path(@post), method: :patch %>
+<% if @post.state == 'moderator' %>
+  <%= button_to 'Publish', send_to_publish_post_path(@post), method: :patch %>
+<% end %>
+
+
+<br>
+<br>
 <br>
 <br>
 
 <%= render partial: 'comments/form',
            locals:  { comment: @new_comment || @post.comments.build } %>
 
-
 <%= render partial: 'comments/comment', collection: @post.comments.except(@new_comment) %>
+

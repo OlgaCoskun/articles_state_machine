@@ -22,10 +22,12 @@
     <%= f.text_field :body, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :link %>
-    <%= f.text_field :link, class: 'form-control' %>
-  </div>
+  <% if @post.state == 'moderator' %>
+    <div class="form-group">
+      <%= f.label :link %>
+      <%= f.text_field :link, class: 'form-control' %>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :category_id %>
@@ -39,4 +41,6 @@
   </div>
 
 <% end %>
+
+<p>Статус - <%= @post.state %></p>
 

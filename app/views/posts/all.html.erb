@@ -13,6 +13,8 @@
       <td><%= link_to 'Show', post_path(post) %></td>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Send to moderator', send_to_moderator_post_path(post), method: :patch %>
+        <br></td>
     </tr>
     </tbody>
   </table>
