@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show, :edit, :update]
 
+  resources :slack_webhooks
+
 end

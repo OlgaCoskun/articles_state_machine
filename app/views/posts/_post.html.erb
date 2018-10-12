@@ -4,7 +4,7 @@
 
 <% @posts.each do |post| %>
 
-  <% if post.state == 'publish' %>
+  <% if post.state == 'published' %>
 
     <p><%= post.title %></p>
     <p><%= post.body %></p>

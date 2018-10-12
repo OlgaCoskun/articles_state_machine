@@ -3,11 +3,11 @@
 <%= render 'form' %>
 
 
-<% if @post.state == 'create' %>
+<% if @post.state == 'created' %>
   <%= button_to 'Send to moderator', send_to_moderator_post_path(@post), method: :patch %>
 <% end %>
 
-<% if @post.state == 'moderator' %>
+<% if @post.state == 'on_moderation' %>
   <%= button_to 'Publish', send_to_publish_post_path(@post), method: :patch %>
 <% end %>
 

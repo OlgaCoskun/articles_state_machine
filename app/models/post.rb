@@ -4,25 +4,22 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for(:category, update_only: true)
   has_many :comments, dependent: :destroy
 
-  state_machine :state, initial: :create do
-    state :moderator
-    state :publish
+  state_machine :state, initial: :created do
+    state :created
+    state :on_moderation
+    state :published
 
-    event :moderator do
-      transition create: :moderator
+    event :send_to_moderation do
+      transition created: :on_moderation
     end
 
-    event :publish do
-      transition moderator: :publish
+    event :send_to_published do
+      transition on_moderation: :published
     end
 
-    state :publish do
+    state :published do
       validates_presence_of :link
       validates_presence_of :category_id
     end
   end
 end
-
-# create
-# moderator
-# publish

@@ -4,7 +4,7 @@
 
 <% @posts.each do |post| %>
 
-  <% if post.state == 'moderator' %>
+  <% if post.state == 'on_moderation' %>
 
     <p><%= post.title %></p>
     <p><%= post.body %></p>

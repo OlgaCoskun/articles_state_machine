@@ -22,7 +22,7 @@
     <%= f.text_field :body, class: 'form-control' %>
   </div>
 
-  <% if @post.state == 'moderator' %>
+  <% if @post.state == 'on_moderation' %>
     <div class="form-group">
       <%= f.label :link %>
       <%= f.text_field :link, class: 'form-control' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_075041) do
+ActiveRecord::Schema.define(version: 2018_10_08_110652) do
 
   create_table "categories", force: :cascade do |t|
     t.text "topic"
@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 2018_09_28_075041) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "post_comments", force: :cascade do |t|
     t.text "com_body"
     t.integer "like_count", default: 0
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["post_id"], name: "index_post_comments_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|

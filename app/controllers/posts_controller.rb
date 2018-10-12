@@ -15,13 +15,13 @@ class PostsController < ApplicationController
   end
 
   def send_to_moderator
-    @post.moderator
+    @post.send_to_moderation
     redirect_to moderator_posts_path, notice: 'Your post has been sent to moderator' if @post.save
   end
 
   def send_to_publish
-    @post.publish
-    if @post.state == 'publish'
+    @post.send_to_published
+    if @post.state == 'published'
       redirect_to root_path, notice: 'Пост выставлен'
     else
       redirect_to post_path(@post), notice: 'Нужен линк и категория'
@@ -51,6 +51,8 @@ class PostsController < ApplicationController
     else
       render :new
     end
+
+    render json: { text: "Some message you want to include" }
   end
 
   # PATCH/PUT /posts/1
@@ -75,8 +77,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    defaults = { state: 'create' }
-    # params.require(:post).permit(:title, :body, :link, :category_id).reverse_merge(defaults)
+    defaults = { state: 'created' }
     params.fetch(:post, {}).permit(:title, :body, :link, :category_id).reverse_merge(defaults)
   end
 end
